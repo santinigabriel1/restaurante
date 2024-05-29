@@ -1,7 +1,7 @@
 /* Responsividade do Header */
 @media screen and (max-width: 1170px) {
     #nav_list,
-    #navbar .btn-default {
+    #navbar .btn-cart {
         display: none;
     }
 
