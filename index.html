@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="responsive.css">
     <script src="https://unpkg.com/scrollreveal"></script>
@@ -25,8 +26,8 @@
                     <a href="#testimonials">Avaliações</a>
                 </li>
             </ul>
-            <button class="btn-cart">
-                (<span id="cart-count">0</span>)
+            <button id="btn_cart">
+                (<span id="cart_count">0</span>)
                 Ver meu carrinho
                 <i class="fa fa-cart-plus"></i>
             </button>
@@ -47,8 +48,8 @@
                     <a href="#testimonials">Avaliações</a>
                 </li>
             </ul>
-            <button class="btn-cart">
-                (<span id="cart-count">0</span>)
+            <button id="btn_cart">
+                (<span id="cart_count">0</span>)
                 Ver meu carrinho
                 <i class="fa fa-cart-plus"></i>
             </button>
@@ -59,6 +60,9 @@
         <section id="home">
             <div class="shape"></div>
             <div id="cta">
+                <div id="date_span">
+                    <span class="hours">Seg a Dom - 18:00 às 22:00</span>
+                </div>
                 <h1 class="title">
                     O sabor vai até
                     <span>você</span>
@@ -106,7 +110,7 @@
                     <img src="assets/dish.png" class="dish-image" alt="">
 
                     <h3 class="dish-title">
-                        Lorem Ipsum
+                        Yakisoba Prime
                     </h3>
 
                     <span class="dish-description">
@@ -124,8 +128,9 @@
 
                     <div class="dish-price">
                         <h4>RS29,90</h4>
-                        <button class="btn-default">
+                        <button class="btn-cart" data-name="Yakisoba Prime" data-price="29.90">
                             <i class="fa-solid fa-basket-shopping"></i>
+
                         </button>
                     </div>
                 </div>
@@ -138,7 +143,7 @@
                     <img src="assets/dish2.png" class="dish-image" alt="">
 
                     <h3 class="dish-title">
-                        Lorem Ipsum
+                        Misto Quente
                     </h3>
 
                     <span class="dish-description">
@@ -156,7 +161,7 @@
 
                     <div class="dish-price">
                         <h4>RS19,90</h4>
-                        <button class="btn-default">
+                        <button class="btn-cart" data-name="Misto Quente" data-price="19.90">
                             <i class="fa-solid fa-basket-shopping"></i>
                         </button>
                     </div>
@@ -170,7 +175,7 @@
                     <img src="assets/dish3.png" class="dish-image" alt="">
 
                     <h3 class="dish-title">
-                        Lorem Ipsum
+                        Mix de Frutas
                     </h3>
 
                     <span class="dish-description">
@@ -188,7 +193,7 @@
 
                     <div class="dish-price">
                         <h4>RS24,90</h4>
-                        <button class="btn-default">
+                        <button class="btn-cart" data-name="Mix de Frutas" data-price="24.90">
                             <i class="fa-solid fa-basket-shopping"></i>
                         </button>
                     </div>
@@ -202,7 +207,7 @@
                     <img src="assets/dish4.png" class="dish-image" alt="">
 
                     <h3 class="dish-title">
-                        Lorem Ipsum
+                        Macarrão com Camarão
                     </h3>
 
                     <span class="dish-description">
@@ -220,7 +225,7 @@
 
                     <div class="dish-price">
                         <h4>RS34,90</h4>
-                        <button class="btn-default">
+                        <button class="btn-cart" data-name="Macarrão com Camarão" data-price="34.90">
                             <i class="fa-solid fa-basket-shopping"></i>
                         </button>
                     </div>
@@ -291,8 +296,27 @@
             </div>
         </section>
 
-
     </main>
+    <div id="modal" class="modal-overlay hidden">
+        <div class="modal-content">
+            <h2 class="modal-title">Meu carrinho</h2>
+    
+            <div id="cart_items" class="cart-items"></div>
+    
+            <p class="total-label">Total: <span id="cart_total">0.00</span></p>
+    
+            <p class="address-label">Endereço de entrega:</p>
+            <input type="text" placeholder="Digite seu endereço completo..." id="address" class="address-input">
+    
+            <p class="address-warn hidden" id="address_warn">Digite seu endereço completo!</p>
+    
+            <div class="modal-buttons">
+                <button id="close_modal_btn" class="modal-button">Fechar</button>
+                <button id="checkout_btn" class="modal-button checkout-button">Finalizar pedido</button>
+            </div>
+        </div>
+    </div>
+    
 
     <footer>
         <img src="assets/wave.svg" alt="">
